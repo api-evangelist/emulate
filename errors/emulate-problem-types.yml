@@ -1,0 +1,47 @@
+generated: '2026-08-01'
+method: derived
+source: openapi/emulate-content-api-openapi.yml
+format: none
+docs: null
+summary:
+  rfc9457: false
+  problem_json_responses: 0
+  note: >-
+    Emulate publishes no error reference. The derived OpenAPI declares no 4xx or 5xx
+    responses because none were observed — the one failure path that was reached returns
+    HTTP 200 with the error carried in the body, which is the finding worth recording
+    here.
+problems:
+- status: 200
+  http_status_misleading: true
+  envelope:
+    status: integer
+    error: string
+  observed_body: '{"status":404,"error":"Job not found"}'
+  title: Job not found
+  detail: >-
+    The careers route answers HTTP 200 for a miss and encodes the real outcome as
+    status 404 inside the JSON body. A client that branches on the HTTP status will
+    treat this as success. There is no type URI, no title/detail split and no
+    application/problem+json media type.
+  source_operation: openapi/emulate-content-api-openapi.yml#listJobs
+  x-evidence:
+    url: https://emulatebio.com/wp-json/emulate-jobs/v2/jobs
+    fetched: '2026-08-01'
+    http_status: 200
+- status: 404
+  title: Not found (site-level)
+  detail: >-
+    Unknown paths on emulatebio.com return HTTP 404 with a full styled WordPress HTML
+    error page (~79-80 KB), not JSON. Content negotiation is not honoured for unknown
+    paths, so an API client requesting application/json still receives HTML.
+  media_type: text/html
+  source: probe of /.well-known/* and /openapi.json
+  x-evidence:
+    fetched: '2026-08-01'
+    http_status: 404
+gaps:
+- No RFC 9457 Problem Details anywhere on the surface.
+- No documented error code registry.
+- Failure signalled in-body over HTTP 200 on at least one route, so HTTP status is unreliable.
+- No JSON error body for unknown paths; a styled HTML 404 page is returned instead.

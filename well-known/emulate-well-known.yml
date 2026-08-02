@@ -1,0 +1,49 @@
+generated: '2026-08-01'
+method: probed
+source: live GET of the /.well-known/ discovery surface on emulatebio.com
+host: https://emulatebio.com
+summary:
+  documents_found: 0
+  note: >-
+    Every /.well-known/ path probed returned HTTP 404. Note that emulatebio.com serves a
+    styled WordPress 404 page (roughly 79-80 KB of HTML) for unknown paths rather than a
+    bare 404 body, so a naive length or content check would look like a hit — the HTTP
+    status is the signal here. No security.txt, no OIDC/OAuth discovery, no api-catalog,
+    no ai-plugin. Emulate publishes no /.well-known/ surface. No WellKnown or SecurityTxt
+    pointer is wired in apis.yml because nothing was found.
+documents:
+- path: /.well-known/security.txt
+  status: 404
+- path: /security.txt
+  status: 404
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+- path: /.well-known/agent-card.json
+  status: 404
+- path: /.well-known/agent.json
+  status: 404
+- path: /llms.txt
+  status: 404
+related_discovery:
+- path: /robots.txt
+  status: 200
+  note: Yoast-generated; allows all agents with Crawl-delay 10, points at sitemap_index.xml
+- path: /sitemap_index.xml
+  status: 200
+  note: >-
+    Yoast sitemap index covering post, page, job_listing, resources, news, support,
+    sequence, user-guides, tribe_events and models sitemaps
+- path: /wp-json/
+  status: 200
+  note: >-
+    WordPress REST API route index — the one real machine-readable contract on this host.
+    See openapi/emulate-content-api-openapi.yml
+x-evidence:
+  fetched: '2026-08-01'
+  method: curl -s -o /dev/null -w '%{http_code}' -L

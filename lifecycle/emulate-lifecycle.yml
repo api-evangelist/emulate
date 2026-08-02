@@ -1,0 +1,61 @@
+generated: '2026-08-01'
+method: derived
+source: openapi/emulate-content-api-openapi.yml
+docs: null
+versioning:
+  scheme: uri-path
+  current: v2
+  docs: null
+  detail: >-
+    Every first-party namespace carries a /v2 segment (emulate-posts/v2,
+    emulate-resources/v2, …). No v1 namespace is registered in the live route index, so
+    v1 either never existed publicly or was removed without a redirect. No versioning
+    policy is published.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  detail: >-
+    No deprecation policy, no Sunset or Deprecation header support, no changelog. No
+    Deprecation pointer is wired in apis.yml.
+sla:
+  url: null
+  uptime_target: null
+status_page:
+  url: null
+  detail: >-
+    No status page. /status/ returned 404 and no status.emulatebio.com host is advertised.
+    No StatusPage pointer is wired in apis.yml.
+changelog:
+  url: null
+  detail: >-
+    No dated API changelog. The site's newsroom (https://emulatebio.com/in-the-news/) and
+    blog (https://emulatebio.com/blog/) carry product announcements but are not a release
+    log, so no ChangeLog pointer is wired.
+deprecated_operations: []
+content_freshness:
+  source: https://emulatebio.com/sitemap_index.xml
+  observed:
+  - sitemap: page-sitemap.xml
+    lastmod: '2026-07-28'
+  - sitemap: tribe_events-sitemap.xml
+    lastmod: '2026-07-31'
+  - sitemap: resources-sitemap.xml
+    lastmod: '2026-07-21'
+  - sitemap: job_listing-sitemap.xml
+    lastmod: '2026-07-17'
+  - sitemap: post-sitemap.xml
+    lastmod: '2026-06-11'
+  - sitemap: news-sitemap.xml
+    lastmod: '2026-07-09'
+  - sitemap: user-guides-sitemap.xml
+    lastmod: '2024-10-11'
+  - sitemap: sequence-sitemap.xml
+    lastmod: '2021-11-14'
+  detail: >-
+    The content behind the API is actively maintained — most sections were updated within
+    the last six weeks of the probe date.
+x-evidence:
+  fetched: '2026-08-01'
+  urls:
+  - https://emulatebio.com/wp-json/
+  - https://emulatebio.com/sitemap_index.xml

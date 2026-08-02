@@ -1,0 +1,87 @@
+overlay: 1.0.0
+x-provenance:
+  generated: '2026-08-01'
+  method: generated
+  source: openapi/emulate-content-api-openapi.yml
+info:
+  title: API Evangelist enhancements for the Emulate Content REST API
+  version: 1.0.0
+extends: openapi/emulate-content-api-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: emulate
+    x-apievangelist-artifacts:
+      authentication: authentication/emulate-authentication.yml
+      conventions: conventions/emulate-conventions.yml
+      errors: errors/emulate-problem-types.yml
+      data_model: data-model/emulate-data-model.yml
+      lifecycle: lifecycle/emulate-lifecycle.yml
+      conformance: conformance/emulate-conformance.yml
+      well_known: well-known/emulate-well-known.yml
+      security: security/emulate-domain-security.yml
+    x-apievangelist-spec-origin: >-
+      Derived by API Evangelist from the live WordPress REST API route index at
+      https://emulatebio.com/wp-json/ on 2026-08-01. Emulate, Inc. does not publish an
+      OpenAPI description; do not present this document as a provider-published contract.
+- target: $.info
+  update:
+    x-agent-notes: >-
+      Anonymous read-only content API. Safe for agents to read. Two response envelopes
+      coexist across six routes, collections are unpaginated and can exceed 1 MB, and at
+      least one route reports failure in-body over HTTP 200 — parse the body, do not
+      trust the HTTP status alone.
+- target: $.paths['/emulate-posts/v2/posts'].get
+  update:
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      audience: null
+      audit: optional
+- target: $.paths['/emulate-in-the-news/v2/news'].get
+  update:
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      audience: null
+      audit: optional
+- target: $.paths['/emulate-resources/v2/resources'].get
+  update:
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      audience: null
+      audit: optional
+    x-response-size-warning: >-
+      Observed at roughly 1.03 MB with 299 records in a single unpaginated response.
+- target: $.paths['/emulate-support/v2/support'].get
+  update:
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      audience: null
+      audit: optional
+- target: $.paths['/emulate-forms/v2/forms'].get
+  update:
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      audience: null
+      audit: optional
+- target: $.paths['/emulate-jobs/v2/jobs'].get
+  update:
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      audience: null
+      audit: optional
+    x-error-signalling: >-
+      Returns HTTP 200 with {"status":404,"error":"Job not found"} on a miss. Branch on
+      the body, not the transport status.
+- target: $.paths['/emulate-support/v2/data-analysis'].get
+  update:
+    x-agentic-access:
+      action-class: connected
+      consequence: read
+      audience: null
+      audit: optional

@@ -1,0 +1,42 @@
+generated: '2026-08-01'
+method: probed
+source: openapi/emulate-content-api-openapi.yml
+summary:
+  types: []
+  api_key_in: []
+  oauth2_flows: []
+  note: >-
+    No authentication is required and none is offered. Every emulate-* namespace under
+    https://emulatebio.com/wp-json returned HTTP 200 with real JSON on an anonymous GET
+    with no credentials, no API key and no session cookie. The route index declares no
+    security requirement for these routes, and Emulate publishes no API key issuance,
+    OAuth client registration or developer account of any kind.
+schemes: []
+observed:
+  anonymous_read: true
+  credentials_required: false
+  probes:
+  - url: https://emulatebio.com/wp-json/emulate-posts/v2/posts
+    headers_sent: none
+    http_status: 200
+  - url: https://emulatebio.com/wp-json/emulate-resources/v2/resources
+    headers_sent: none
+    http_status: 200
+  - url: https://emulatebio.com/wp-json/emulate-support/v2/support
+    headers_sent: none
+    http_status: 200
+  discovery:
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+write_surface:
+  present: false
+  note: >-
+    Only GET is registered on the emulate-* routes. WordPress core write routes under
+    /wp-json/wp/v2/ exist but require an authenticated WordPress user; the site's
+    /login/ page is the WordPress administrative login, not a customer or developer
+    sign-up, so no SignUp/Login pointer is claimed in apis.yml.
+x-evidence:
+  fetched: '2026-08-01'
+  url: https://emulatebio.com/wp-json/

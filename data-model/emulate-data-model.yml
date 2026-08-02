@@ -1,0 +1,123 @@
+generated: '2026-08-01'
+method: derived
+source: openapi/emulate-content-api-openapi.yml
+docs: null
+note: >-
+  Derived from the schemas in the derived OpenAPI, which were themselves read off
+  observed responses. Every entity here is a WordPress custom post type or taxonomy that
+  Emulate registered; the field names are WordPress internals.
+entities:
+- name: WordPressPost
+  kind: base
+  description: >-
+    The shared WP_Post record every collection returns — ID, post_title, post_content,
+    post_date/post_date_gmt, post_modified, post_status, post_name (slug), guid,
+    post_type, post_mime_type, post_parent, menu_order, comment_count, filter.
+  identifier: ID
+  id_type: integer
+- name: BlogPost
+  kind: post_type
+  extends: WordPressPost
+  route: /emulate-posts/v2/posts
+  adds: [media_url, landscape_url, img_id, link, display_date, cats]
+  observed_count: 62
+- name: NewsItem
+  kind: post_type
+  extends: WordPressPost
+  route: /emulate-in-the-news/v2/news
+  adds: [post_link]
+  observed_count: 114
+- name: Form
+  kind: post_type
+  extends: WordPressPost
+  route: /emulate-forms/v2/forms
+  adds: [form_title, form_type, form_id, form_submit, form_html, form_desc]
+  observed_count: 258
+  description: Gated-content request forms fronting webinars, app notes and posters.
+- name: Resource
+  kind: post_type
+  extends: WordPressPost
+  route: /emulate-resources/v2/resources
+  adds: [media_url]
+  observed_count: 299
+  description: Resource-library assets — posters, application notes, webinars, publications.
+- name: SupportDocument
+  kind: post_type
+  extends: WordPressPost
+  route: /emulate-support/v2/support
+  adds: [media_url]
+  observed_count: 26
+  description: Organ-Chip protocols and user guides.
+- name: JobListing
+  kind: post_type
+  route: /emulate-jobs/v2/jobs
+  observed_count: null
+  description: >-
+    Careers listings. The anonymous probe returned an in-body "Job not found" envelope,
+    so no record shape was observed and none is asserted.
+taxonomies:
+- name: news_category
+  applies_to: [NewsItem]
+  term_count: 2
+- name: application
+  applies_to: [Resource]
+  term_count: 12
+  description: Research application area (toxicology, oncology, immunology, ...).
+- name: organ-models
+  applies_to: [Resource]
+  term_count: 11
+  description: Organ-Chip model the asset relates to (Liver, Kidney, Brain, Lung, ...).
+- name: product
+  applies_to: [Resource]
+  term_count: 12
+  description: Emulate product the asset relates to (Chip-S1, Chip-R1, Zoe-CM2, ...).
+- name: resource_type
+  applies_to: [Resource]
+  term_count: 8
+  description: Asset format (poster, application note, webinar, ...).
+- name: models
+  applies_to: [SupportDocument]
+  term_count: 7
+- name: protocols
+  applies_to: [SupportDocument]
+  term_count: 6
+relationships:
+- from: Resource
+  to: application
+  type: has_many
+  via: taxonomy
+- from: Resource
+  to: organ-models
+  type: has_many
+  via: taxonomy
+- from: Resource
+  to: product
+  type: has_many
+  via: taxonomy
+- from: Resource
+  to: resource_type
+  type: has_many
+  via: taxonomy
+- from: SupportDocument
+  to: models
+  type: has_many
+  via: taxonomy
+- from: SupportDocument
+  to: protocols
+  type: has_many
+  via: taxonomy
+- from: NewsItem
+  to: news_category
+  type: has_many
+  via: taxonomy
+- from: BlogPost
+  to: cats
+  type: has_many
+  via: field
+gaps:
+- >-
+    Taxonomy terms are returned as a sibling object in the same response rather than as
+    linked resources; there are no per-term routes and no $ref-style relationships in
+    the payload. The join is positional and must be reassembled client-side.
+- No entity for Organ-Chip experimental data, instruments or runs — this is a content
+  model only, not a laboratory data model.

@@ -1,0 +1,87 @@
+generated: '2026-08-01'
+method: derived
+source: openapi/emulate-content-api-openapi.yml
+docs: null
+note: >-
+  Emulate publishes no API documentation, so nothing here is quoted from a docs page.
+  Every statement below is derived from the live route index and from observed responses.
+  Where a convention is absent, that absence is recorded rather than filled in.
+authentication:
+  style: none
+  detail: Anonymous read; see authentication/emulate-authentication.yml
+idempotency:
+  supported: false
+  header: null
+  detail: >-
+    No idempotency contract. The surface is read-only (GET only on every emulate-*
+    route), so idempotency keys would have nothing to protect — but there is also no
+    documented idempotency behaviour for the WordPress core write routes. No Idempotency
+    pointer is wired in apis.yml.
+pagination:
+  supported: false
+  style: none
+  detail: >-
+    The emulate-* collection routes accept no arguments in the route index and return
+    the entire collection in one response — 62 blog posts, 114 news items, 258 forms,
+    299 resource-library items, 26 support documents. The resources payload alone was
+    just over 1 MB. There is no page/per_page/offset/cursor parameter, no Link header
+    and no total-count header. Core wp/v2 routes do support WordPress's standard
+    page/per_page plus X-WP-Total and X-WP-TotalPages headers, but the first-party
+    namespaces do not.
+filtering:
+  supported: false
+  detail: >-
+    No query parameters. Faceting is client-side: the news, resources and support routes
+    return the taxonomy vocabularies alongside the posts (news_category; application,
+    organ-models, product, resource_type; models, protocols) so the caller filters
+    locally.
+field_expansion:
+  supported: false
+  detail: Records are returned whole; no sparse-fieldset or expand parameter.
+response_envelope:
+  styles:
+  - shape: bare array of records
+    routes: [/emulate-posts/v2/posts, /emulate-forms/v2/forms]
+  - shape: two-element array — element 0 is {posts:[...]}, element 1 is a taxonomy map
+    routes:
+    - /emulate-in-the-news/v2/news
+    - /emulate-resources/v2/resources
+    - /emulate-support/v2/support
+  consistency: inconsistent
+  detail: >-
+    Two different top-level shapes across six routes, and the field names are raw
+    WordPress WP_Post internals (post_title, post_content, guid, post_mime_type) rather
+    than a designed public contract. A consumer must special-case per route.
+error_handling:
+  format: in-body error object over HTTP 200
+  problem_json: false
+  detail: >-
+    /emulate-jobs/v2/jobs answered HTTP 200 with {"status":404,"error":"Job not found"}.
+    The transport status does not reflect the outcome, so a client cannot rely on the
+    HTTP status code. Not RFC 9457. See errors/emulate-problem-types.yml.
+versioning:
+  scheme: uri-path
+  current: v2
+  detail: >-
+    Each first-party namespace carries a /v2 segment (emulate-posts/v2, …). No v1 route
+    is registered in the index and no versioning or deprecation policy is published.
+rate_limiting:
+  documented: false
+  headers_observed: []
+  detail: >-
+    No rate-limit headers were observed and no rate-limit policy is published. robots.txt
+    does declare Crawl-delay 10 for crawlers, which is a courtesy signal for the HTML
+    site rather than an API limit.
+tracing:
+  request_id_header: null
+  detail: No request-id or correlation header observed.
+content_negotiation:
+  media_types: [application/json]
+cors:
+  observed: null
+  detail: Not evaluated.
+cross_links:
+  authentication: authentication/emulate-authentication.yml
+  errors: errors/emulate-problem-types.yml
+  lifecycle: lifecycle/emulate-lifecycle.yml
+  data_model: data-model/emulate-data-model.yml

@@ -1,0 +1,331 @@
+openapi: 3.1.0
+x-provenance:
+  generated: '2026-08-01'
+  method: derived
+  source: https://emulatebio.com/wp-json/
+  note: >-
+    Derived by API Evangelist from the live, anonymous WordPress REST API route index
+    published at https://emulatebio.com/wp-json/ on 2026-08-01, and from an observed
+    HTTP GET of every path below. Emulate, Inc. does not publish an OpenAPI description;
+    this document describes only routes and response shapes that were actually observed
+    on the wire. Paths, methods and response structures are recorded verbatim from
+    those responses. Nothing here is invented — where a shape was not observable it is
+    left unconstrained rather than guessed.
+info:
+  title: Emulate Content REST API (derived)
+  version: '2'
+  summary: >-
+    Anonymous read-only REST surface behind emulatebio.com, exposing Emulate's news,
+    blog posts, marketing forms, resource library and Organ-Chip support/protocol
+    content as JSON.
+  description: |
+    Emulate, Inc. runs emulatebio.com on WordPress and exposes the WordPress REST API
+    publicly at `https://emulatebio.com/wp-json/`. Alongside the stock `wp/v2` core
+    namespace, Emulate has registered six **first-party custom namespaces** that back
+    the site's own content sections:
+
+    | Namespace | Surface |
+    |---|---|
+    | `emulate-in-the-news/v2` | Newsroom / press coverage index |
+    | `emulate-posts/v2` | Blog posts |
+    | `emulate-jobs/v2` | Careers / job listings |
+    | `emulate-forms/v2` | Gated webinar / resource request forms |
+    | `emulate-resources/v2` | Resource library (posters, app notes, webinars) with taxonomies |
+    | `emulate-support/v2` | Support protocols, user guides and data-analysis tooling |
+
+    These endpoints require **no authentication** and returned real JSON payloads when
+    probed. This is a content/marketing API, not a laboratory-instrument or Organ-Chip
+    data API — Emulate publishes no developer portal, no API reference and no SDKs, and
+    the desktop analysis applications listed at https://emulatebio.com/products/software/
+    are downloadable tools rather than API clients.
+
+    Responses are raw WordPress `WP_Post` records (`ID`, `post_title`, `post_content`,
+    `post_date`, `guid`, `post_type`, …) plus per-namespace extras, so field names follow
+    WordPress internals rather than a designed public contract.
+  contact:
+    name: Emulate, Inc.
+    url: https://emulatebio.com/contact/
+  x-derived-by:
+    organization: API Evangelist
+    url: https://apievangelist.com
+servers:
+- url: https://emulatebio.com/wp-json
+  description: Production WordPress REST API root for emulatebio.com
+tags:
+- name: News
+  description: Press coverage and newsroom items.
+- name: Posts
+  description: Emulate blog posts.
+- name: Jobs
+  description: Careers / job listings.
+- name: Forms
+  description: Gated content request forms.
+- name: Resources
+  description: Resource library items and their taxonomies.
+- name: Support
+  description: Organ-Chip protocols, user guides and data-analysis content.
+- name: Discovery
+  description: WordPress REST API discovery documents.
+paths:
+  /:
+    get:
+      operationId: getApiIndex
+      tags: [Discovery]
+      summary: Get the WordPress REST API route index
+      description: >-
+        Returns the site index document listing every registered namespace and route,
+        including the six first-party `emulate-*` namespaces.
+      responses:
+        '200':
+          description: Route index document.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name: {type: string}
+                  description: {type: string}
+                  url: {type: string, format: uri}
+                  home: {type: string, format: uri}
+                  namespaces:
+                    type: array
+                    items: {type: string}
+                  routes: {type: object}
+      x-evidence:
+        url: https://emulatebio.com/wp-json/
+        fetched: '2026-08-01'
+        http_status: 200
+  /emulate-in-the-news/v2/news:
+    get:
+      operationId: listNews
+      tags: [News]
+      summary: List newsroom / press coverage items
+      description: >-
+        Returns a two-element array: the first element carries `posts` (the newsroom
+        items), the second carries the `news_category` taxonomy used to filter them.
+      responses:
+        '200':
+          description: Newsroom collection plus its category taxonomy.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostsAndTaxonomies'
+      x-evidence:
+        url: https://emulatebio.com/wp-json/emulate-in-the-news/v2/news
+        fetched: '2026-08-01'
+        http_status: 200
+        observed_items: 114
+  /emulate-posts/v2/posts:
+    get:
+      operationId: listPosts
+      tags: [Posts]
+      summary: List Emulate blog posts
+      description: >-
+        Returns a flat array of blog post records. Each record adds `media_url`,
+        `landscape_url`, `img_id`, `link`, `display_date` and `cats` to the standard
+        WordPress post fields.
+      responses:
+        '200':
+          description: Blog post collection.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BlogPost'
+      x-evidence:
+        url: https://emulatebio.com/wp-json/emulate-posts/v2/posts
+        fetched: '2026-08-01'
+        http_status: 200
+        observed_items: 62
+  /emulate-jobs/v2/jobs:
+    get:
+      operationId: listJobs
+      tags: [Jobs]
+      summary: List job listings
+      description: >-
+        Careers listing endpoint. When probed anonymously with no arguments it answered
+        HTTP 200 with an in-body error envelope (`{"status":404,"error":"Job not found"}`),
+        so the selector this route expects is not publicly documented. The route index
+        declares no arguments.
+      responses:
+        '200':
+          description: >-
+            Job listing collection, or an in-body error envelope when no listing matches.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - type: array
+                  items: {type: object}
+                - $ref: '#/components/schemas/InBodyError'
+      x-evidence:
+        url: https://emulatebio.com/wp-json/emulate-jobs/v2/jobs
+        fetched: '2026-08-01'
+        http_status: 200
+        observed_body: '{"status":404,"error":"Job not found"}'
+  /emulate-forms/v2/forms:
+    get:
+      operationId: listForms
+      tags: [Forms]
+      summary: List gated content request forms
+      description: >-
+        Returns the marketing forms that front gated assets (webinars, app notes),
+        each with `form_title`, `form_type`, `form_id`, `form_submit`, `form_html`
+        and `form_desc` alongside the WordPress post fields.
+      responses:
+        '200':
+          description: Form collection.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Form'
+      x-evidence:
+        url: https://emulatebio.com/wp-json/emulate-forms/v2/forms
+        fetched: '2026-08-01'
+        http_status: 200
+        observed_items: 258
+  /emulate-resources/v2/resources:
+    get:
+      operationId: listResources
+      tags: [Resources]
+      summary: List resource-library items with their taxonomies
+      description: >-
+        Returns a two-element array: the first element carries `posts` (resource-library
+        items), the second carries the taxonomies used to facet them — `application`,
+        `organ-models`, `product` and `resource_type`.
+      responses:
+        '200':
+          description: Resource collection plus its four taxonomies.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostsAndTaxonomies'
+      x-evidence:
+        url: https://emulatebio.com/wp-json/emulate-resources/v2/resources
+        fetched: '2026-08-01'
+        http_status: 200
+        observed_items: 299
+        observed_taxonomies: [application, organ-models, product, resource_type]
+  /emulate-support/v2/support:
+    get:
+      operationId: listSupportContent
+      tags: [Support]
+      summary: List Organ-Chip support protocols and user guides
+      description: >-
+        Returns a two-element array: the first element carries `posts` (support
+        protocols and user guides), the second carries the `models` and `protocols`
+        taxonomies.
+      responses:
+        '200':
+          description: Support collection plus its taxonomies.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostsAndTaxonomies'
+      x-evidence:
+        url: https://emulatebio.com/wp-json/emulate-support/v2/support
+        fetched: '2026-08-01'
+        http_status: 200
+        observed_items: 26
+        observed_taxonomies: [models, protocols]
+  /emulate-support/v2/data-analysis:
+    get:
+      operationId: listDataAnalysisTools
+      tags: [Support]
+      summary: List data-analysis tool entries
+      description: >-
+        Backs the data-analysis tooling listing under Support. When probed anonymously
+        it answered HTTP 200 with an empty body, so no response shape is asserted here.
+      responses:
+        '200':
+          description: >-
+            Data-analysis tool collection. Observed as an empty body on an anonymous
+            probe; the shape is not asserted.
+      x-evidence:
+        url: https://emulatebio.com/wp-json/emulate-support/v2/data-analysis
+        fetched: '2026-08-01'
+        http_status: 200
+        observed_body_bytes: 0
+components:
+  schemas:
+    WordPressPost:
+      type: object
+      description: >-
+        A raw WordPress `WP_Post` record as returned by the Emulate namespaces. Field
+        names are WordPress internals, not a designed public contract.
+      properties:
+        ID: {type: integer}
+        post_author: {type: string}
+        post_date: {type: string}
+        post_date_gmt: {type: string}
+        post_content: {type: string}
+        post_title: {type: string}
+        post_excerpt: {type: string}
+        post_status: {type: string}
+        comment_status: {type: string}
+        ping_status: {type: string}
+        post_password: {type: string}
+        post_name: {type: string}
+        post_modified: {type: string}
+        post_modified_gmt: {type: string}
+        post_parent: {type: integer}
+        guid: {type: string}
+        menu_order: {type: integer}
+        post_type: {type: string}
+        post_mime_type: {type: string}
+        comment_count: {type: string}
+        filter: {type: string}
+    BlogPost:
+      allOf:
+      - $ref: '#/components/schemas/WordPressPost'
+      - type: object
+        properties:
+          media_url: {type: string}
+          landscape_url: {type: string}
+          img_id: {type: [integer, string]}
+          link: {type: string, format: uri}
+          display_date: {type: string}
+          cats: {}
+    Form:
+      allOf:
+      - $ref: '#/components/schemas/WordPressPost'
+      - type: object
+        properties:
+          form_title: {type: string}
+          form_type: {type: string}
+          form_id: {type: [integer, string]}
+          form_submit: {type: string}
+          form_html: {type: string}
+          form_desc: {type: string}
+    PostsAndTaxonomies:
+      type: array
+      description: >-
+        Two-element envelope used by the news, resources and support routes. Element 0
+        is `{ "posts": [...] }`; element 1 is an object of taxonomy name to term map.
+      items:
+        oneOf:
+        - type: object
+          properties:
+            posts:
+              type: array
+              items:
+                allOf:
+                - $ref: '#/components/schemas/WordPressPost'
+                - type: object
+                  properties:
+                    media_url: {type: string}
+                    post_link: {type: string, format: uri}
+        - type: object
+          additionalProperties:
+            type: object
+    InBodyError:
+      type: object
+      description: >-
+        Error envelope observed on `/emulate-jobs/v2/jobs`. Note the HTTP status stays
+        200 and the real status is carried in the body — not RFC 9457 Problem Details.
+      properties:
+        status: {type: integer}
+        error: {type: string}

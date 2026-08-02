@@ -1,0 +1,16 @@
+generated: '2026-08-01'
+method: generated
+source: openapi/emulate-content-api-openapi.yml
+note: >-
+  Emulate publishes no AGENTS.md, skill files or agent guidance — searched and not found.
+  These skills are authored by API Evangelist and grounded in operationIds that exist
+  verbatim in the derived OpenAPI.
+skills:
+- file: emulate-find-organ-chip-protocol.md
+  name: Find an Emulate Organ-Chip protocol or user guide
+  api: openapi/emulate-content-api-openapi.yml
+  operations: [listSupportContent]
+- file: emulate-search-resource-library.md
+  name: Search the Emulate resource library and newsroom
+  api: openapi/emulate-content-api-openapi.yml
+  operations: [listResources, listPosts, listNews]

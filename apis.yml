@@ -1,7 +1,18 @@
 aid: emulate
 name: Emulate
-description: 'Emulate is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Emulate, Inc. is a Boston, Massachusetts biotechnology company, spun
+  out of Harvard''s Wyss Institute in 2014, that commercialized Organ-on-a-Chip technology
+  for human-relevant preclinical research. Its Human Emulation System pairs the Ava
+  Emulation System and Zoe-CM2 Culture Module instruments with Chip-S1, Chip-R1, Chip-A1
+  and Chip-Array consumables and validated Organ-Chip models for Brain, Liver, Kidney,
+  Lung, Duodenum Intestine, Bone Marrow, Lymphoid and Vagina, applied across toxicology,
+  oncology, cell and gene therapy, immunology, infectious disease, microbiome and
+  neuroscience. Emulate publishes no developer portal, API reference or SDKs; its
+  software products are downloadable desktop analysis calculators and a firmware Utility
+  Hub. Enrichment probing did find a real, anonymous, read-only WordPress REST API
+  behind emulatebio.com carrying six first-party emulate-* namespaces for news, blog
+  posts, jobs, forms, the resource library and Organ-Chip support protocols.'
+image: https://emulatebio.com/wp-content/uploads/2024/02/emulate-logo.png
 url: https://raw.githubusercontent.com/api-evangelist/emulate/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
@@ -12,12 +23,103 @@ created: '2026-08-01'
 modified: '2026-08-01'
 tags:
 - Company
-apis: []
+- Biotechnology
+- Life Sciences
+- Organ-on-a-Chip
+- Drug Discovery
+- Preclinical Research
+- Toxicology
+- Laboratory Instruments
+- In Vitro Models
+- Scientific Software
+apis:
+- aid: emulate:content-api
+  name: Emulate Content REST API
+  description: 'Anonymous, read-only REST surface behind emulatebio.com. Emulate runs
+    WordPress and exposes the WordPress REST API publicly, with six first-party custom
+    namespaces registered alongside the core wp/v2 namespace: emulate-in-the-news/v2
+    (newsroom), emulate-posts/v2 (blog), emulate-jobs/v2 (careers), emulate-forms/v2
+    (gated content forms), emulate-resources/v2 (resource library with application,
+    organ-models, product and resource_type taxonomies) and emulate-support/v2 (Organ-Chip
+    protocols, user guides and data-analysis tooling). No authentication is required
+    and no API keys, rate-limit headers or developer documentation are published for
+    it. This is a content and marketing API, not an instrument or Organ-Chip data API.'
+  humanURL: https://emulatebio.com/
+  baseURL: https://emulatebio.com/wp-json
+  tags:
+  - Content
+  - News
+  - Blog
+  - Jobs
+  - Resources
+  - Support
+  properties:
+  - type: OpenAPI
+    url: openapi/emulate-content-api-openapi.yml
+  - type: Overlay
+    url: overlays/emulate-content-api-overlay.yaml
+  - type: Authentication
+    url: authentication/emulate-authentication.yml
+  - type: Conventions
+    url: conventions/emulate-conventions.yml
+  - type: ErrorCatalog
+    url: errors/emulate-problem-types.yml
+  - type: DataModel
+    url: data-model/emulate-data-model.yml
+  - type: Website
+    url: https://emulatebio.com/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/emulate-domain-security.yml
 - type: Website
   url: https://forgeglobal.com/emulate_stock/
+- type: Website
+  url: https://emulatebio.com/
+- type: Blog
+  url: https://emulatebio.com/blog/
+- type: BlogRSS
+  url: https://emulatebio.com/feed/
+- type: Support
+  url: https://emulatebio.com/support/
+- type: HelpCenter
+  url: https://emulatebio.com/contact-support/
+- type: Documentation
+  url: https://emulatebio.com/support/
+- type: GitHubOrganization
+  url: https://github.com/emulatebio
+- type: PrivacyPolicy
+  url: https://emulatebio.com/privacy-policy/
+- type: TermsOfService
+  url: https://emulatebio.com/emulate-inc-terms-of-use/
+- type: Legal
+  url: https://emulatebio.com/legal/
+- type: Careers
+  url: https://emulatebio.com/careers/
+- type: Events
+  url: https://emulatebio.com/events/
+- type: Publications
+  url: https://emulatebio.com/publications/
+- type: Products
+  url: https://emulatebio.com/products/
+- type: Software
+  url: https://emulatebio.com/products/software/
+- type: News
+  url: https://emulatebio.com/in-the-news/
+- type: Conformance
+  url: conformance/emulate-conformance.yml
+- type: LLMsTxt
+  url: llms/emulate-llms.txt
+- type: Lifecycle
+  url: lifecycle/emulate-lifecycle.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-08-01'
+  status: enriched
+  artifacts_added: 15
+  pass: local-v1
