@@ -74,6 +74,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: MCPServer
+  url: mcp/emulate-mcp.yml
 - type: DomainSecurity
   url: security/emulate-domain-security.yml
 - type: Website
