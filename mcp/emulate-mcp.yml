@@ -5,14 +5,12 @@ source: openapi/emulate-content-api-openapi.yml
 published: false
 search:
   result: none
-  detail: >-
-    No official or community MCP server for Emulate was found. Emulate publishes no
-    developer program, and https://emulatebio.com/.well-known/ai-plugin.json returned 404.
-pointer_policy: >-
-  NO MCPServer pointer is wired in apis.yml. This file is a candidate design derived from
-  the observed REST surface, not a server Emulate operates. Wiring type: MCPServer would
-  claim an agent surface that does not exist. If Emulate ever ships one, replace this file
-  with the searched version and add the pointer then.
+  detail: No official or community MCP server for Emulate was found. Emulate publishes no developer program,
+    and https://emulatebio.com/.well-known/ai-plugin.json returned 404.
+pointer_policy: 'NO MCPServer pointer is wired in apis.yml. This file is a candidate design derived from
+  the observed REST surface, not a server Emulate operates. Wiring type: MCPServer would claim an agent
+  surface that does not exist. If Emulate ever ships one, replace this file with the searched version
+  and add the pointer then.'
 server:
   name: emulate
   transport: http
@@ -25,9 +23,8 @@ tools:
   description: List Emulate newsroom and press coverage items with their categories.
   source_operation: openapi/emulate-content-api-openapi.yml#listNews
 - name: list_emulate_resources
-  description: >-
-    List Emulate resource-library assets with the application, organ-models, product and
-    resource_type taxonomies used to facet them.
+  description: List Emulate resource-library assets with the application, organ-models, product and resource_type
+    taxonomies used to facet them.
   source_operation: openapi/emulate-content-api-openapi.yml#listResources
 - name: list_emulate_support_documents
   description: List Emulate Organ-Chip protocols and user guides with their model and protocol taxonomies.
@@ -39,12 +36,15 @@ tools:
   description: List Emulate job openings.
   source_operation: openapi/emulate-content-api-openapi.yml#listJobs
 notes:
-- >-
-    Every candidate tool is a read with no parameters, because the backing routes accept
-    no arguments. A real server would need to add filtering and pagination server-side —
-    the resources route alone returns roughly 1 MB in one response, which is too large for
-    a single tool result.
-- >-
-    A tool crosswalk (mcp/emulate-tool-crosswalk.yml) is deliberately not emitted: the
-    crosswalk exists to record divergence between a real MCP or GraphQL surface and a REST
-    surface, and Emulate has neither an MCP server nor GraphQL.
+- Every candidate tool is a read with no parameters, because the backing routes accept no arguments. A
+  real server would need to add filtering and pagination server-side — the resources route alone returns
+  roughly 1 MB in one response, which is too large for a single tool result.
+- 'A tool crosswalk (mcp/emulate-tool-crosswalk.yml) is deliberately not emitted: the crosswalk exists
+  to record divergence between a real MCP or GraphQL surface and a REST surface, and Emulate has neither
+  an MCP server nor GraphQL.'
+deployment:
+  mode: none
+  verified: derived
+  tools: 6
+  checked: '2026-08-12'
+  source: catalog MCP census

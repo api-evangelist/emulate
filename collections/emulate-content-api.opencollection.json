@@ -1,0 +1,154 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Emulate Content REST API (derived)",
+    "version": "2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discovery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get the WordPress REST API route index",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://emulatebio.com/wp-json/"
+          },
+          "docs": "Returns the site index document listing every registered namespace and route, including the six first-party `emulate-*` namespaces."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "News",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List newsroom / press coverage items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://emulatebio.com/wp-json/emulate-in-the-news/v2/news"
+          },
+          "docs": "Returns a two-element array: the first element carries `posts` (the newsroom items), the second carries the `news_category` taxonomy used to filter them."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Posts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Emulate blog posts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://emulatebio.com/wp-json/emulate-posts/v2/posts"
+          },
+          "docs": "Returns a flat array of blog post records. Each record adds `media_url`, `landscape_url`, `img_id`, `link`, `display_date` and `cats` to the standard WordPress post fields."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List job listings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://emulatebio.com/wp-json/emulate-jobs/v2/jobs"
+          },
+          "docs": "Careers listing endpoint. When probed anonymously with no arguments it answered HTTP 200 with an in-body error envelope (`{\"status\":404,\"error\":\"Job not found\"}`), so the selector this route expects is not publicly documented. The route index declares no arguments."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Forms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List gated content request forms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://emulatebio.com/wp-json/emulate-forms/v2/forms"
+          },
+          "docs": "Returns the marketing forms that front gated assets (webinars, app notes), each with `form_title`, `form_type`, `form_id`, `form_submit`, `form_html` and `form_desc` alongside the WordPress post fields."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Resources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List resource-library items with their taxonomies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://emulatebio.com/wp-json/emulate-resources/v2/resources"
+          },
+          "docs": "Returns a two-element array: the first element carries `posts` (resource-library items), the second carries the taxonomies used to facet them — `application`, `organ-models`, `product` and `resource_type`."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Support",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Organ-Chip support protocols and user guides",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://emulatebio.com/wp-json/emulate-support/v2/support"
+          },
+          "docs": "Returns a two-element array: the first element carries `posts` (support protocols and user guides), the second carries the `models` and `protocols` taxonomies."
+        },
+        {
+          "info": {
+            "name": "List data-analysis tool entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://emulatebio.com/wp-json/emulate-support/v2/data-analysis"
+          },
+          "docs": "Backs the data-analysis tooling listing under Support. When probed anonymously it answered HTTP 200 with an empty body, so no response shape is asserted here."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

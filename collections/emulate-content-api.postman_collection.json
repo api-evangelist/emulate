@@ -1,0 +1,674 @@
+{
+  "item": [
+    {
+      "id": "baa3425c-d159-4334-9e28-efbe4e457b61",
+      "name": "News",
+      "description": {
+        "content": "Press coverage and newsroom items.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "63f06480-d0f8-4c30-87ca-e66c9fdc8aa0",
+          "name": "List newsroom / press coverage items",
+          "request": {
+            "name": "List newsroom / press coverage items",
+            "description": {
+              "content": "Returns a two-element array: the first element carries `posts` (the newsroom items), the second carries the `news_category` taxonomy used to filter them.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "emulate-in-the-news",
+                "v2",
+                "news"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4f9d108-1ae9-4929-836b-f2d20f0e383f",
+              "name": "Newsroom collection plus its category taxonomy.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emulate-in-the-news",
+                    "v2",
+                    "news"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"posts\": [\n      {\n        \"ID\": 823,\n        \"post_author\": \"string\",\n        \"post_date\": \"string\",\n        \"post_date_gmt\": \"string\",\n        \"post_content\": \"string\",\n        \"post_title\": \"string\",\n        \"post_excerpt\": \"string\",\n        \"post_status\": \"string\",\n        \"comment_status\": \"string\",\n        \"ping_status\": \"string\",\n        \"post_password\": \"string\",\n        \"post_name\": \"string\",\n        \"post_modified\": \"string\",\n        \"post_modified_gmt\": \"string\",\n        \"post_parent\": 7354,\n        \"guid\": \"string\",\n        \"menu_order\": 2921,\n        \"post_type\": \"string\",\n        \"post_mime_type\": \"string\",\n        \"comment_count\": \"string\",\n        \"filter\": \"string\",\n        \"media_url\": \"string\",\n        \"post_link\": \"https://KalXjUJRZADiKdzaEtgabdJuuQMId.ajruNfbX0mhGJIVyDDtvNRDPchRo.+lh6Oe2LBhEHuojcWSdYIgIiodR+NRyCrTnmhmiQk,hfGOg\"\n      },\n      {\n        \"ID\": 2691,\n        \"post_author\": \"string\",\n        \"post_date\": \"string\",\n        \"post_date_gmt\": \"string\",\n        \"post_content\": \"string\",\n        \"post_title\": \"string\",\n        \"post_excerpt\": \"string\",\n        \"post_status\": \"string\",\n        \"comment_status\": \"string\",\n        \"ping_status\": \"string\",\n        \"post_password\": \"string\",\n        \"post_name\": \"string\",\n        \"post_modified\": \"string\",\n        \"post_modified_gmt\": \"string\",\n        \"post_parent\": 7249,\n        \"guid\": \"string\",\n        \"menu_order\": 3022,\n        \"post_type\": \"string\",\n        \"post_mime_type\": \"string\",\n        \"comment_count\": \"string\",\n        \"filter\": \"string\",\n        \"media_url\": \"string\",\n        \"post_link\": \"https://NztcIOZtSQgOnvBZTXbiufIMxFWA.qfs2hBUc+.JWJTVN.ACQZwCGqLh6Urw.sHIXp\"\n      }\n    ]\n  },\n  {\n    \"posts\": [\n      {\n        \"ID\": 1931,\n        \"post_author\": \"string\",\n        \"post_date\": \"string\",\n        \"post_date_gmt\": \"string\",\n        \"post_content\": \"string\",\n        \"post_title\": \"string\",\n        \"post_excerpt\": \"string\",\n        \"post_status\": \"string\",\n        \"comment_status\": \"string\",\n        \"ping_status\": \"string\",\n        \"post_password\": \"string\",\n        \"post_name\": \"string\",\n        \"post_modified\": \"string\",\n        \"post_modified_gmt\": \"string\",\n        \"post_parent\": 2646,\n        \"guid\": \"string\",\n        \"menu_order\": 4162,\n        \"post_type\": \"string\",\n        \"post_mime_type\": \"string\",\n        \"comment_count\": \"string\",\n        \"filter\": \"string\",\n        \"media_url\": \"string\",\n        \"post_link\": \"https://yGodqGHpvAudZUHKBhTDMnEXEYUItplHo.vpNLu2VEBBX8QJ5mZr\"\n      },\n      {\n        \"ID\": 6081,\n        \"post_author\": \"string\",\n        \"post_date\": \"string\",\n        \"post_date_gmt\": \"string\",\n        \"post_content\": \"string\",\n        \"post_title\": \"string\",\n        \"post_excerpt\": \"string\",\n        \"post_status\": \"string\",\n        \"comment_status\": \"string\",\n        \"ping_status\": \"string\",\n        \"post_password\": \"string\",\n        \"post_name\": \"string\",\n        \"post_modified\": \"string\",\n        \"post_modified_gmt\": \"string\",\n        \"post_parent\": 8060,\n        \"guid\": \"string\",\n        \"menu_order\": 1917,\n        \"post_type\": \"string\",\n        \"post_mime_type\": \"string\",\n        \"comment_count\": \"string\",\n        \"filter\": \"string\",\n        \"media_url\": \"string\",\n        \"post_link\": \"http://EFCzkjQASYkfoj.qhj.ePkLVZuK0ol1L-kEQ7WFSoinqS\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0c835b87-92cc-461d-a914-52a451f38097",
+      "name": "Posts",
+      "description": {
+        "content": "Emulate blog posts.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5aae3e94-4e83-48fa-8eda-0a6851cb025b",
+          "name": "List Emulate blog posts",
+          "request": {
+            "name": "List Emulate blog posts",
+            "description": {
+              "content": "Returns a flat array of blog post records. Each record adds `media_url`, `landscape_url`, `img_id`, `link`, `display_date` and `cats` to the standard WordPress post fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "emulate-posts",
+                "v2",
+                "posts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ea0ddaed-5f73-40cf-8f23-bc55d16dc312",
+              "name": "Blog post collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emulate-posts",
+                    "v2",
+                    "posts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"ID\": 5465,\n    \"post_author\": \"string\",\n    \"post_date\": \"string\",\n    \"post_date_gmt\": \"string\",\n    \"post_content\": \"string\",\n    \"post_title\": \"string\",\n    \"post_excerpt\": \"string\",\n    \"post_status\": \"string\",\n    \"comment_status\": \"string\",\n    \"ping_status\": \"string\",\n    \"post_password\": \"string\",\n    \"post_name\": \"string\",\n    \"post_modified\": \"string\",\n    \"post_modified_gmt\": \"string\",\n    \"post_parent\": 4017,\n    \"guid\": \"string\",\n    \"menu_order\": 400,\n    \"post_type\": \"string\",\n    \"post_mime_type\": \"string\",\n    \"comment_count\": \"string\",\n    \"filter\": \"string\",\n    \"media_url\": \"string\",\n    \"landscape_url\": \"string\",\n    \"img_id\": 5384,\n    \"link\": \"http://sr.cvWP-lksgnXicwesAqW,lvxJpE.+v,uPfHdoxq.7qHBl.\",\n    \"display_date\": \"string\",\n    \"cats\": \"\"\n  },\n  {\n    \"ID\": 7134,\n    \"post_author\": \"string\",\n    \"post_date\": \"string\",\n    \"post_date_gmt\": \"string\",\n    \"post_content\": \"string\",\n    \"post_title\": \"string\",\n    \"post_excerpt\": \"string\",\n    \"post_status\": \"string\",\n    \"comment_status\": \"string\",\n    \"ping_status\": \"string\",\n    \"post_password\": \"string\",\n    \"post_name\": \"string\",\n    \"post_modified\": \"string\",\n    \"post_modified_gmt\": \"string\",\n    \"post_parent\": 7847,\n    \"guid\": \"string\",\n    \"menu_order\": 2068,\n    \"post_type\": \"string\",\n    \"post_mime_type\": \"string\",\n    \"comment_count\": \"string\",\n    \"filter\": \"string\",\n    \"media_url\": \"string\",\n    \"landscape_url\": \"string\",\n    \"img_id\": 6140,\n    \"link\": \"https://TMQZCjzslcrssYquEdPBwJ.keyWsPbYyxIDSWX3aZ\",\n    \"display_date\": \"string\",\n    \"cats\": \"\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f44fe26d-e491-4c1e-9dba-99309ebde127",
+      "name": "Jobs",
+      "description": {
+        "content": "Careers / job listings.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "53151062-6d78-481f-85cb-91ba9f1c0c52",
+          "name": "List job listings",
+          "request": {
+            "name": "List job listings",
+            "description": {
+              "content": "Careers listing endpoint. When probed anonymously with no arguments it answered HTTP 200 with an in-body error envelope (`{\"status\":404,\"error\":\"Job not found\"}`), so the selector this route expects is not publicly documented. The route index declares no arguments.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "emulate-jobs",
+                "v2",
+                "jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7eb8e772-b6ea-48a5-9843-7b0f93d19756",
+              "name": "Job listing collection, or an in-body error envelope when no listing matches.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emulate-jobs",
+                    "v2",
+                    "jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "bfbb1803-26fd-4ef9-ba4f-1a54938a62ef",
+      "name": "Forms",
+      "description": {
+        "content": "Gated content request forms.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c25411f7-40d8-4ac9-9374-1a44df64c6c8",
+          "name": "List gated content request forms",
+          "request": {
+            "name": "List gated content request forms",
+            "description": {
+              "content": "Returns the marketing forms that front gated assets (webinars, app notes), each with `form_title`, `form_type`, `form_id`, `form_submit`, `form_html` and `form_desc` alongside the WordPress post fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "emulate-forms",
+                "v2",
+                "forms"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c3bebbf6-a1f5-47d0-8f6b-68e7e1a52fb3",
+              "name": "Form collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emulate-forms",
+                    "v2",
+                    "forms"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"ID\": 8633,\n    \"post_author\": \"string\",\n    \"post_date\": \"string\",\n    \"post_date_gmt\": \"string\",\n    \"post_content\": \"string\",\n    \"post_title\": \"string\",\n    \"post_excerpt\": \"string\",\n    \"post_status\": \"string\",\n    \"comment_status\": \"string\",\n    \"ping_status\": \"string\",\n    \"post_password\": \"string\",\n    \"post_name\": \"string\",\n    \"post_modified\": \"string\",\n    \"post_modified_gmt\": \"string\",\n    \"post_parent\": 923,\n    \"guid\": \"string\",\n    \"menu_order\": 6529,\n    \"post_type\": \"string\",\n    \"post_mime_type\": \"string\",\n    \"comment_count\": \"string\",\n    \"filter\": \"string\",\n    \"form_title\": \"string\",\n    \"form_type\": \"string\",\n    \"form_id\": 8650,\n    \"form_submit\": \"string\",\n    \"form_html\": \"string\",\n    \"form_desc\": \"string\"\n  },\n  {\n    \"ID\": 8513,\n    \"post_author\": \"string\",\n    \"post_date\": \"string\",\n    \"post_date_gmt\": \"string\",\n    \"post_content\": \"string\",\n    \"post_title\": \"string\",\n    \"post_excerpt\": \"string\",\n    \"post_status\": \"string\",\n    \"comment_status\": \"string\",\n    \"ping_status\": \"string\",\n    \"post_password\": \"string\",\n    \"post_name\": \"string\",\n    \"post_modified\": \"string\",\n    \"post_modified_gmt\": \"string\",\n    \"post_parent\": 3751,\n    \"guid\": \"string\",\n    \"menu_order\": 3222,\n    \"post_type\": \"string\",\n    \"post_mime_type\": \"string\",\n    \"comment_count\": \"string\",\n    \"filter\": \"string\",\n    \"form_title\": \"string\",\n    \"form_type\": \"string\",\n    \"form_id\": 7546,\n    \"form_submit\": \"string\",\n    \"form_html\": \"string\",\n    \"form_desc\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "74d435db-3dbc-4c48-83d6-381200c51ecc",
+      "name": "Resources",
+      "description": {
+        "content": "Resource library items and their taxonomies.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0421519e-1c78-488e-823a-459aec907ef9",
+          "name": "List resource-library items with their taxonomies",
+          "request": {
+            "name": "List resource-library items with their taxonomies",
+            "description": {
+              "content": "Returns a two-element array: the first element carries `posts` (resource-library items), the second carries the taxonomies used to facet them — `application`, `organ-models`, `product` and `resource_type`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "emulate-resources",
+                "v2",
+                "resources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c019334-693e-490a-b33d-f1225461aff1",
+              "name": "Resource collection plus its four taxonomies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emulate-resources",
+                    "v2",
+                    "resources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"posts\": [\n      {\n        \"ID\": 823,\n        \"post_author\": \"string\",\n        \"post_date\": \"string\",\n        \"post_date_gmt\": \"string\",\n        \"post_content\": \"string\",\n        \"post_title\": \"string\",\n        \"post_excerpt\": \"string\",\n        \"post_status\": \"string\",\n        \"comment_status\": \"string\",\n        \"ping_status\": \"string\",\n        \"post_password\": \"string\",\n        \"post_name\": \"string\",\n        \"post_modified\": \"string\",\n        \"post_modified_gmt\": \"string\",\n        \"post_parent\": 7354,\n        \"guid\": \"string\",\n        \"menu_order\": 2921,\n        \"post_type\": \"string\",\n        \"post_mime_type\": \"string\",\n        \"comment_count\": \"string\",\n        \"filter\": \"string\",\n        \"media_url\": \"string\",\n        \"post_link\": \"https://KalXjUJRZADiKdzaEtgabdJuuQMId.ajruNfbX0mhGJIVyDDtvNRDPchRo.+lh6Oe2LBhEHuojcWSdYIgIiodR+NRyCrTnmhmiQk,hfGOg\"\n      },\n      {\n        \"ID\": 2691,\n        \"post_author\": \"string\",\n        \"post_date\": \"string\",\n        \"post_date_gmt\": \"string\",\n        \"post_content\": \"string\",\n        \"post_title\": \"string\",\n        \"post_excerpt\": \"string\",\n        \"post_status\": \"string\",\n        \"comment_status\": \"string\",\n        \"ping_status\": \"string\",\n        \"post_password\": \"string\",\n        \"post_name\": \"string\",\n        \"post_modified\": \"string\",\n        \"post_modified_gmt\": \"string\",\n        \"post_parent\": 7249,\n        \"guid\": \"string\",\n        \"menu_order\": 3022,\n        \"post_type\": \"string\",\n        \"post_mime_type\": \"string\",\n        \"comment_count\": \"string\",\n        \"filter\": \"string\",\n        \"media_url\": \"string\",\n        \"post_link\": \"https://NztcIOZtSQgOnvBZTXbiufIMxFWA.qfs2hBUc+.JWJTVN.ACQZwCGqLh6Urw.sHIXp\"\n      }\n    ]\n  },\n  {\n    \"posts\": [\n      {\n        \"ID\": 1931,\n        \"post_author\": \"string\",\n        \"post_date\": \"string\",\n        \"post_date_gmt\": \"string\",\n        \"post_content\": \"string\",\n        \"post_title\": \"string\",\n        \"post_excerpt\": \"string\",\n        \"post_status\": \"string\",\n        \"comment_status\": \"string\",\n        \"ping_status\": \"string\",\n        \"post_password\": \"string\",\n        \"post_name\": \"string\",\n        \"post_modified\": \"string\",\n        \"post_modified_gmt\": \"string\",\n        \"post_parent\": 2646,\n        \"guid\": \"string\",\n        \"menu_order\": 4162,\n        \"post_type\": \"string\",\n        \"post_mime_type\": \"string\",\n        \"comment_count\": \"string\",\n        \"filter\": \"string\",\n        \"media_url\": \"string\",\n        \"post_link\": \"https://yGodqGHpvAudZUHKBhTDMnEXEYUItplHo.vpNLu2VEBBX8QJ5mZr\"\n      },\n      {\n        \"ID\": 6081,\n        \"post_author\": \"string\",\n        \"post_date\": \"string\",\n        \"post_date_gmt\": \"string\",\n        \"post_content\": \"string\",\n        \"post_title\": \"string\",\n        \"post_excerpt\": \"string\",\n        \"post_status\": \"string\",\n        \"comment_status\": \"string\",\n        \"ping_status\": \"string\",\n        \"post_password\": \"string\",\n        \"post_name\": \"string\",\n        \"post_modified\": \"string\",\n        \"post_modified_gmt\": \"string\",\n        \"post_parent\": 8060,\n        \"guid\": \"string\",\n        \"menu_order\": 1917,\n        \"post_type\": \"string\",\n        \"post_mime_type\": \"string\",\n        \"comment_count\": \"string\",\n        \"filter\": \"string\",\n        \"media_url\": \"string\",\n        \"post_link\": \"http://EFCzkjQASYkfoj.qhj.ePkLVZuK0ol1L-kEQ7WFSoinqS\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "32c1d3b5-aab3-47aa-96f0-297c70a671d5",
+      "name": "Support",
+      "description": {
+        "content": "Organ-Chip protocols, user guides and data-analysis content.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "22ed06c9-e5d3-41ca-b590-46c0433a2c68",
+          "name": "List Organ-Chip support protocols and user guides",
+          "request": {
+            "name": "List Organ-Chip support protocols and user guides",
+            "description": {
+              "content": "Returns a two-element array: the first element carries `posts` (support protocols and user guides), the second carries the `models` and `protocols` taxonomies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "emulate-support",
+                "v2",
+                "support"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "07e679e6-4776-47e3-a1f5-1e3938550b72",
+              "name": "Support collection plus its taxonomies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emulate-support",
+                    "v2",
+                    "support"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"posts\": [\n      {\n        \"ID\": 823,\n        \"post_author\": \"string\",\n        \"post_date\": \"string\",\n        \"post_date_gmt\": \"string\",\n        \"post_content\": \"string\",\n        \"post_title\": \"string\",\n        \"post_excerpt\": \"string\",\n        \"post_status\": \"string\",\n        \"comment_status\": \"string\",\n        \"ping_status\": \"string\",\n        \"post_password\": \"string\",\n        \"post_name\": \"string\",\n        \"post_modified\": \"string\",\n        \"post_modified_gmt\": \"string\",\n        \"post_parent\": 7354,\n        \"guid\": \"string\",\n        \"menu_order\": 2921,\n        \"post_type\": \"string\",\n        \"post_mime_type\": \"string\",\n        \"comment_count\": \"string\",\n        \"filter\": \"string\",\n        \"media_url\": \"string\",\n        \"post_link\": \"https://KalXjUJRZADiKdzaEtgabdJuuQMId.ajruNfbX0mhGJIVyDDtvNRDPchRo.+lh6Oe2LBhEHuojcWSdYIgIiodR+NRyCrTnmhmiQk,hfGOg\"\n      },\n      {\n        \"ID\": 2691,\n        \"post_author\": \"string\",\n        \"post_date\": \"string\",\n        \"post_date_gmt\": \"string\",\n        \"post_content\": \"string\",\n        \"post_title\": \"string\",\n        \"post_excerpt\": \"string\",\n        \"post_status\": \"string\",\n        \"comment_status\": \"string\",\n        \"ping_status\": \"string\",\n        \"post_password\": \"string\",\n        \"post_name\": \"string\",\n        \"post_modified\": \"string\",\n        \"post_modified_gmt\": \"string\",\n        \"post_parent\": 7249,\n        \"guid\": \"string\",\n        \"menu_order\": 3022,\n        \"post_type\": \"string\",\n        \"post_mime_type\": \"string\",\n        \"comment_count\": \"string\",\n        \"filter\": \"string\",\n        \"media_url\": \"string\",\n        \"post_link\": \"https://NztcIOZtSQgOnvBZTXbiufIMxFWA.qfs2hBUc+.JWJTVN.ACQZwCGqLh6Urw.sHIXp\"\n      }\n    ]\n  },\n  {\n    \"posts\": [\n      {\n        \"ID\": 1931,\n        \"post_author\": \"string\",\n        \"post_date\": \"string\",\n        \"post_date_gmt\": \"string\",\n        \"post_content\": \"string\",\n        \"post_title\": \"string\",\n        \"post_excerpt\": \"string\",\n        \"post_status\": \"string\",\n        \"comment_status\": \"string\",\n        \"ping_status\": \"string\",\n        \"post_password\": \"string\",\n        \"post_name\": \"string\",\n        \"post_modified\": \"string\",\n        \"post_modified_gmt\": \"string\",\n        \"post_parent\": 2646,\n        \"guid\": \"string\",\n        \"menu_order\": 4162,\n        \"post_type\": \"string\",\n        \"post_mime_type\": \"string\",\n        \"comment_count\": \"string\",\n        \"filter\": \"string\",\n        \"media_url\": \"string\",\n        \"post_link\": \"https://yGodqGHpvAudZUHKBhTDMnEXEYUItplHo.vpNLu2VEBBX8QJ5mZr\"\n      },\n      {\n        \"ID\": 6081,\n        \"post_author\": \"string\",\n        \"post_date\": \"string\",\n        \"post_date_gmt\": \"string\",\n        \"post_content\": \"string\",\n        \"post_title\": \"string\",\n        \"post_excerpt\": \"string\",\n        \"post_status\": \"string\",\n        \"comment_status\": \"string\",\n        \"ping_status\": \"string\",\n        \"post_password\": \"string\",\n        \"post_name\": \"string\",\n        \"post_modified\": \"string\",\n        \"post_modified_gmt\": \"string\",\n        \"post_parent\": 8060,\n        \"guid\": \"string\",\n        \"menu_order\": 1917,\n        \"post_type\": \"string\",\n        \"post_mime_type\": \"string\",\n        \"comment_count\": \"string\",\n        \"filter\": \"string\",\n        \"media_url\": \"string\",\n        \"post_link\": \"http://EFCzkjQASYkfoj.qhj.ePkLVZuK0ol1L-kEQ7WFSoinqS\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e384928a-22dc-4b9c-9f2c-23cd0284b457",
+          "name": "List data-analysis tool entries",
+          "request": {
+            "name": "List data-analysis tool entries",
+            "description": {
+              "content": "Backs the data-analysis tooling listing under Support. When probed anonymously it answered HTTP 200 with an empty body, so no response shape is asserted here.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "emulate-support",
+                "v2",
+                "data-analysis"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd21e2d0-3453-41e0-b00e-db50590805bd",
+              "name": "Data-analysis tool collection. Observed as an empty body on an anonymous probe; the shape is not asserted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emulate-support",
+                    "v2",
+                    "data-analysis"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "fe3cefcf-138f-408c-9624-159a5417764d",
+      "name": "Discovery",
+      "description": {
+        "content": "WordPress REST API discovery documents.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0cdfb2f4-83b3-4b03-a781-fce1e3b91631",
+          "name": "Get the WordPress REST API route index",
+          "request": {
+            "name": "Get the WordPress REST API route index",
+            "description": {
+              "content": "Returns the site index document listing every registered namespace and route, including the six first-party `emulate-*` namespaces.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d041511e-fc44-462b-bb1a-6b0c2c090472",
+              "name": "Route index document.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"url\": \"https://MAiLvxrbBJDHuPOKGZUpHIKZGraFkABC.iblops4pZoXwxtXCRyx,VWhJ,xNKtK,-wT.5wfF\",\n  \"home\": \"http://qQZDCwNTvZFsBDoNGTbxdTxjIqcFLfbwR.souXvZHWwhG8y3kDxtn0noyZZYU\",\n  \"namespaces\": [\n    \"string\",\n    \"string\"\n  ],\n  \"routes\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://emulatebio.com/wp-json",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a59cf0c5-0366-4280-8635-bbeae5b22b36",
+    "name": "Emulate Content REST API (derived)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Emulate, Inc. runs emulatebio.com on WordPress and exposes the WordPress REST API\npublicly at `https://emulatebio.com/wp-json/`. Alongside the stock `wp/v2` core\nnamespace, Emulate has registered six **first-party custom namespaces** that back\nthe site's own content sections:\n\n| Namespace | Surface |\n|---|---|\n| `emulate-in-the-news/v2` | Newsroom / press coverage index |\n| `emulate-posts/v2` | Blog posts |\n| `emulate-jobs/v2` | Careers / job listings |\n| `emulate-forms/v2` | Gated webinar / resource request forms |\n| `emulate-resources/v2` | Resource library (posters, app notes, webinars) with taxonomies |\n| `emulate-support/v2` | Support protocols, user guides and data-analysis tooling |\n\nThese endpoints require **no authentication** and returned real JSON payloads when\nprobed. This is a content/marketing API, not a laboratory-instrument or Organ-Chip\ndata API — Emulate publishes no developer portal, no API reference and no SDKs, and\nthe desktop analysis applications listed at https://emulatebio.com/products/software/\nare downloadable tools rather than API clients.\n\nResponses are raw WordPress `WP_Post` records (`ID`, `post_title`, `post_content`,\n`post_date`, `guid`, `post_type`, …) plus per-namespace extras, so field names follow\nWordPress internals rather than a designed public contract.\n\n\nContact Support:\n Name: Emulate, Inc.",
+      "type": "text/plain"
+    }
+  }
+}
