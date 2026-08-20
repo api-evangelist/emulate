@@ -50,6 +50,13 @@ apis:
   - Content
   - News
   - Blog
+  - Job
+  - Resources
+  - Support
+  tags_raw:
+  - Content
+  - News
+  - Blog
   - Jobs
   - Resources
   - Support
