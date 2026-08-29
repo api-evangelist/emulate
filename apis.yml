@@ -12,6 +12,18 @@ description: 'Emulate, Inc. is a Boston, Massachusetts biotechnology company, sp
   Hub. Enrichment probing did find a real, anonymous, read-only WordPress REST API
   behind emulatebio.com carrying six first-party emulate-* namespaces for news, blog
   posts, jobs, forms, the resource library and Organ-Chip support protocols.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://emulatebio.com/wp-content/uploads/2024/02/emulate-logo.png
 url: https://raw.githubusercontent.com/api-evangelist/emulate/refs/heads/main/apis.yml
 x-type: company
