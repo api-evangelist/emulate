@@ -1,0 +1,156 @@
+openapi: 3.2.0
+info:
+  title: Emulate Content REST API (derived) News API
+  version: '2'
+  summary: Anonymous read-only REST surface behind emulatebio.com, exposing Emulate's news, blog posts, marketing forms, resource library and Organ-Chip support/protocol content as JSON.
+  description: 'Emulate, Inc. runs emulatebio.com on WordPress and exposes the WordPress REST API
+
+    publicly at `https://emulatebio.com/wp-json/`. Alongside the stock `wp/v2` core
+
+    namespace, Emulate has registered six **first-party custom namespaces** that back
+
+    the site''s own content sections:
+
+
+    | Namespace | Surface |
+
+    |---|---|
+
+    | `emulate-in-the-news/v2` | Newsroom / press coverage index |
+
+    | `emulate-posts/v2` | Blog posts |
+
+    | `emulate-jobs/v2` | Careers / job listings |
+
+    | `emulate-forms/v2` | Gated webinar / resource request forms |
+
+    | `emulate-resources/v2` | Resource library (posters, app notes, webinars) with taxonomies |
+
+    | `emulate-support/v2` | Support protocols, user guides and data-analysis tooling |
+
+
+    These endpoints require **no authentication** and returned real JSON payloads when
+
+    probed. This is a content/marketing API, not a laboratory-instrument or Organ-Chip
+
+    data API — Emulate publishes no developer portal, no API reference and no SDKs, and
+
+    the desktop analysis applications listed at https://emulatebio.com/products/software/
+
+    are downloadable tools rather than API clients.
+
+
+    Responses are raw WordPress `WP_Post` records (`ID`, `post_title`, `post_content`,
+
+    `post_date`, `guid`, `post_type`, …) plus per-namespace extras, so field names follow
+
+    WordPress internals rather than a designed public contract.
+
+    '
+  contact:
+    name: Emulate, Inc.
+    url: https://emulatebio.com/contact/
+  x-derived-by:
+    organization: API Evangelist
+    url: https://apievangelist.com
+servers:
+- url: https://emulatebio.com/wp-json
+  description: Production WordPress REST API root for emulatebio.com
+tags:
+- name: News
+  description: Press coverage and newsroom items.
+paths:
+  /emulate-in-the-news/v2/news:
+    get:
+      operationId: listNews
+      tags:
+      - News
+      summary: List newsroom / press coverage items
+      description: 'Returns a two-element array: the first element carries `posts` (the newsroom items), the second carries the `news_category` taxonomy used to filter them.'
+      responses:
+        '200':
+          description: Newsroom collection plus its category taxonomy.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostsAndTaxonomies'
+      x-evidence:
+        url: https://emulatebio.com/wp-json/emulate-in-the-news/v2/news
+        fetched: '2026-08-01'
+        http_status: 200
+        observed_items: 114
+components:
+  schemas:
+    PostsAndTaxonomies:
+      type: array
+      description: 'Two-element envelope used by the news, resources and support routes. Element 0 is `{ "posts": [...] }`; element 1 is an object of taxonomy name to term map.'
+      items:
+        oneOf:
+        - type: object
+          properties:
+            posts:
+              type: array
+              items:
+                allOf:
+                - $ref: '#/components/schemas/WordPressPost'
+                - type: object
+                  properties:
+                    media_url:
+                      type: string
+                    post_link:
+                      type: string
+                      format: uri
+        - type: object
+          additionalProperties:
+            type: object
+    WordPressPost:
+      type: object
+      description: A raw WordPress `WP_Post` record as returned by the Emulate namespaces. Field names are WordPress internals, not a designed public contract.
+      properties:
+        ID:
+          type: integer
+        post_author:
+          type: string
+        post_date:
+          type: string
+        post_date_gmt:
+          type: string
+        post_content:
+          type: string
+        post_title:
+          type: string
+        post_excerpt:
+          type: string
+        post_status:
+          type: string
+        comment_status:
+          type: string
+        ping_status:
+          type: string
+        post_password:
+          type: string
+        post_name:
+          type: string
+        post_modified:
+          type: string
+        post_modified_gmt:
+          type: string
+        post_parent:
+          type: integer
+        guid:
+          type: string
+        menu_order:
+          type: integer
+        post_type:
+          type: string
+        post_mime_type:
+          type: string
+        comment_count:
+          type: string
+        filter:
+          type: string
+x-provenance:
+  generated: '2026-08-01'
+  method: derived
+  source: https://emulatebio.com/wp-json/
+  note: Derived by API Evangelist from the live, anonymous WordPress REST API route index published at https://emulatebio.com/wp-json/ on 2026-08-01, and from an observed HTTP GET of every path below. Emulate, Inc. does not publish an OpenAPI description; this document describes only routes and response shapes that were actually observed on the wire. Paths, methods and response structures are recorded verbatim from those responses. Nothing here is invented — where a shape was not observable it is left unconstrained rather than guessed.
