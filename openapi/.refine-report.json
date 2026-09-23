@@ -1,0 +1,32 @@
+{
+  "provider": "emulate",
+  "sources": [
+    "_ae-authored/emulate-content-api-openapi.yml"
+  ],
+  "outputs": [
+    "emulate-discovery-api-openapi.yml",
+    "emulate-forms-api-openapi.yml",
+    "emulate-jobs-api-openapi.yml",
+    "emulate-news-api-openapi.yml",
+    "emulate-posts-api-openapi.yml",
+    "emulate-resources-api-openapi.yml",
+    "emulate-support-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "emulate-content-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "emulate-discovery-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "emulate-forms-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "emulate-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "emulate-news-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "emulate-posts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "emulate-resources-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "emulate-support-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}
