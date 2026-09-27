@@ -58,156 +58,26 @@ tags:
 - In Vitro Models
 - Scientific Software
 apis:
-- aid: emulate:emulate-discovery-api
-  name: Emulate Discovery API
-  description: WordPress REST API discovery documents.
-  humanURL: https://emulatebio.com/
+- aid: emulate:emulatebio-com-website-wordpress-rest
+  name: Emulate Website (WordPress REST)
+  description: 'The public WordPress REST API (wp-json) of the Emulate website at emulatebio.com: the
+    route index of the site''s content management system, catalogued as one site surface rather than as
+    separate APIs.'
   baseURL: https://emulatebio.com/wp-json
   tags:
-  - Discovery
+  - WordPress
+  x-surface: platform-generated
   properties:
-  - type: OpenAPI
-    url: openapi/emulate-discovery-api-openapi.yml
-  - type: Authentication
-    url: authentication/emulate-authentication.yml
-  - type: Conventions
-    url: conventions/emulate-conventions.yml
-  - type: ErrorCatalog
-    url: errors/emulate-problem-types.yml
-  - type: DataModel
-    url: data-model/emulate-data-model.yml
-  - type: Website
-    url: https://emulatebio.com/
-- aid: emulate:emulate-forms-api
-  name: Emulate Forms API
-  description: Gated content request forms.
-  humanURL: https://emulatebio.com/
-  baseURL: https://emulatebio.com/wp-json
-  tags:
-  - Forms
-  properties:
-  - type: OpenAPI
-    url: openapi/emulate-forms-api-openapi.yml
-  - type: Authentication
-    url: authentication/emulate-authentication.yml
-  - type: Conventions
-    url: conventions/emulate-conventions.yml
-  - type: ErrorCatalog
-    url: errors/emulate-problem-types.yml
-  - type: DataModel
-    url: data-model/emulate-data-model.yml
-  - type: Website
-    url: https://emulatebio.com/
-- aid: emulate:emulate-jobs-api
-  name: Emulate Jobs API
-  description: Careers / job listings.
-  humanURL: https://emulatebio.com/
-  baseURL: https://emulatebio.com/wp-json
-  tags:
-  - Job
-  tags_raw:
-  - Jobs
-  properties:
-  - type: OpenAPI
-    url: openapi/emulate-jobs-api-openapi.yml
-  - type: Authentication
-    url: authentication/emulate-authentication.yml
-  - type: Conventions
-    url: conventions/emulate-conventions.yml
-  - type: ErrorCatalog
-    url: errors/emulate-problem-types.yml
-  - type: DataModel
-    url: data-model/emulate-data-model.yml
-  - type: Website
-    url: https://emulatebio.com/
-- aid: emulate:emulate-news-api
-  name: Emulate News API
-  description: Press coverage and newsroom items.
-  humanURL: https://emulatebio.com/
-  baseURL: https://emulatebio.com/wp-json
-  tags:
-  - News
-  properties:
-  - type: OpenAPI
-    url: openapi/emulate-news-api-openapi.yml
-  - type: Authentication
-    url: authentication/emulate-authentication.yml
-  - type: Conventions
-    url: conventions/emulate-conventions.yml
-  - type: ErrorCatalog
-    url: errors/emulate-problem-types.yml
-  - type: DataModel
-    url: data-model/emulate-data-model.yml
-  - type: Website
-    url: https://emulatebio.com/
-- aid: emulate:emulate-posts-api
-  name: Emulate Posts API
-  description: Emulate blog posts.
-  humanURL: https://emulatebio.com/
-  baseURL: https://emulatebio.com/wp-json
-  tags:
-  - Posts
-  properties:
-  - type: OpenAPI
-    url: openapi/emulate-posts-api-openapi.yml
-  - type: Authentication
-    url: authentication/emulate-authentication.yml
-  - type: Conventions
-    url: conventions/emulate-conventions.yml
-  - type: ErrorCatalog
-    url: errors/emulate-problem-types.yml
-  - type: DataModel
-    url: data-model/emulate-data-model.yml
-  - type: Website
-    url: https://emulatebio.com/
-- aid: emulate:emulate-resources-api
-  name: Emulate Resources API
-  description: Resource library items and their taxonomies.
-  humanURL: https://emulatebio.com/
-  baseURL: https://emulatebio.com/wp-json
-  tags:
-  - Resources
-  properties:
-  - type: OpenAPI
-    url: openapi/emulate-resources-api-openapi.yml
-  - type: Authentication
-    url: authentication/emulate-authentication.yml
-  - type: Conventions
-    url: conventions/emulate-conventions.yml
-  - type: ErrorCatalog
-    url: errors/emulate-problem-types.yml
-  - type: DataModel
-    url: data-model/emulate-data-model.yml
-  - type: Website
-    url: https://emulatebio.com/
-- aid: emulate:emulate-support-api
-  name: Emulate Support API
-  description: Organ-Chip protocols, user guides and data-analysis content.
-  humanURL: https://emulatebio.com/
-  baseURL: https://emulatebio.com/wp-json
-  tags:
-  - Support
-  properties:
-  - type: OpenAPI
-    url: openapi/emulate-support-api-openapi.yml
-  - type: Authentication
-    url: authentication/emulate-authentication.yml
-  - type: Conventions
-    url: conventions/emulate-conventions.yml
-  - type: ErrorCatalog
-    url: errors/emulate-problem-types.yml
-  - type: DataModel
-    url: data-model/emulate-data-model.yml
-  - type: Website
-    url: https://emulatebio.com/
+  - type: Documentation
+    url: https://emulatebio.com/wp-json
+  x-platform: wordpress
+  x-platform-surface: rest
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
-- type: Overlay
-  url: overlays/emulate-content-api-overlay.yaml
 - type: X-MCPServerCandidate
   url: mcp/emulate-mcp.yml
   note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
@@ -253,6 +123,14 @@ common:
   url: lifecycle/emulate-lifecycle.yml
 - type: AgentSkill
   url: skills/_index.yml
+- type: Authentication
+  url: authentication/emulate-authentication.yml
+- type: Conventions
+  url: conventions/emulate-conventions.yml
+- type: ErrorCatalog
+  url: errors/emulate-problem-types.yml
+- type: DataModel
+  url: data-model/emulate-data-model.yml
 x-enrichment:
   date: '2026-08-01'
   status: enriched
